@@ -30,6 +30,8 @@ provisioning/roles/ANXS.postgresql
 provisioning/roles/abtris.nginx-passenger
 provisioning/roles/nickhammond.logrotate
 
+provisioning/playbook.retry
+
 postfix_log/supervisor/*.log
 postfix_log/maillog
 postfix_log/messages
