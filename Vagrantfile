@@ -132,6 +132,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   config.vm.provision "ansible_local" do |ansible|
+    ansible.install_mode = "pip"
+    ansible.pip_install_cmd = "sudo apt install python3-pip -y"
+    ansible.pip_args = " ; sudo python3 -m pip install ansible==2.8.0 # "
     ansible.playbook = "provisioning/playbook.yml"
     ansible.install = true
     ansible.vault_password_file = "./.cuttlefish_ansible_vault_pass.txt"
