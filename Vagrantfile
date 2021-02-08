@@ -128,9 +128,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
+  config.vm.provision "file", source: "./.cuttlefish_ansible_vault_pass.txt", destination: ".cuttlefish_ansible_vault_pass.txt"
 
-  config.vm.provision "ansible" do |ansible|
+
+  config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "provisioning/playbook.yml"
-    ansible.vault_password_file = "~/.cuttlefish_ansible_vault_pass.txt"
+    ansible.install = true
+    ansible.vault_password_file = "./.cuttlefish_ansible_vault_pass.txt"
   end
 end
